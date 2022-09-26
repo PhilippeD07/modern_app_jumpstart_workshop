@@ -20,6 +20,12 @@ spec:
       port: 8001
   routes:
     - path: /
+      matches: matches:
+        - conditions:
+          - cookie: "app_version"
+            value: "dark"
+          action:
+            pass: spa-dark
       action:
         pass: spa
     - path: /api
@@ -43,5 +49,5 @@ spec:
           upstream: api
           rewritePath: /images
 - name: spa-dark
- service: spa-dark
- port: 80
+  service: spa-dark
+  port: 80
